@@ -77,7 +77,7 @@ pub fn welcome(settings: &Settings) {
     );
 
     println!("{} {}",
-             "Access web UI at".truecolor(134, 186, 144),
+             "Access web UI at    ".truecolor(134, 186, 144),
              ui_link.bold().underline().truecolor(82, 139, 183));
     println!();
 }
