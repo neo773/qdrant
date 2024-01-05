@@ -33,12 +33,12 @@ jobs:
       - name: Build Debian package
         run: |
           cargo install cargo-deb
-          cargo deb --no-build
+          cargo deb --no-build --target x86_64-unknown-linux-gnu
       - name: Upload Debian package
         uses: actions/upload-artifact@v2
         with:
           name:  ${{ matrix.target }}-debian
-          path: target/debian/*.deb
+          path: target/x86_64-unknown-linux-gnu/debian/*.deb
 
   build-mac-binaries:
     strategy:
