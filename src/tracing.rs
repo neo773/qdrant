@@ -58,7 +58,7 @@ pub fn setup(user_filters: &str) -> anyhow::Result<()> {
 
     #[cfg(all(feature = "console-subscriber", not(tokio_unstable)))]
     eprintln!(
-        "`console-subscriber` requires manually enabling \
+        "`console-subscriber` requires manually enablingggg \
          `--cfg tokio_unstable` rust flags during compilation!"
     );
 
