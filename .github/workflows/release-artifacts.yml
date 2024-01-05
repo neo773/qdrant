@@ -30,6 +30,15 @@ jobs:
           bin: qdrant
           target: ${{ matrix.target }}
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Debian package
+        run: |
+          cargo install cargo-deb
+          cargo deb --no-build
+      - name: Upload Debian package
+        uses: actions/upload-artifact@v2
+        with:
+          name:  ${{ matrix.target }}-debian
+          path: target/aarch64-unknown-linux-gnu/debian/*.deb
 
   build-mac-binaries:
     strategy:
