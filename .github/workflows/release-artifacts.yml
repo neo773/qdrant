@@ -35,10 +35,13 @@ jobs:
           cargo install cargo-deb
           cargo deb --no-strip --target x86_64-unknown-linux-gnu
       - name: Upload Debian package
-        uses: actions/upload-artifact@v2
+        uses: svenstaro/upload-release-action@v2
         with:
-          name:  ${{ matrix.target }}-debian
-          path: target/x86_64-unknown-linux-gnu/debian/*.deb
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/x86_64-unknown-linux-gnu/debian/*.deb
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
 
   build-mac-binaries:
     strategy:
